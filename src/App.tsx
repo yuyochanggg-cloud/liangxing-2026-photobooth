@@ -40,7 +40,7 @@ export default function App() {
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (adminPassword === '20268888') { // 後台密碼
+    if (adminPassword === '20250087') { // 後台密碼
       setView('admin');
       setShowAdminLogin(false);
     } else {
