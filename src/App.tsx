@@ -15,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "photo-db362.firebasestorage.app",
   messagingSenderId: "579678920204",
   appId: "1:579678920204:web:8cd5532a617e4233d11829"
-};
+};; 
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -181,19 +181,33 @@ function UserBooth({ onBack, userId }: { onBack: () => void, userId: string }) {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    const targetW = 1080; targetH = 1920;
-    canvas.width = targetW; canvas.height = targetH;
+    
+    // 修正：補上 const 宣告
+    const targetW = 1080; 
+    const targetH = 1920;
+    
+    canvas.width = targetW; 
+    canvas.height = targetH;
 
     if (ctx) {
       const videoAspect = video.videoWidth / video.videoHeight;
       const targetAspect = targetW / targetH;
+      
+      // 修正：明確宣告變數
       let drawW, drawH, startX, startY;
 
       if (videoAspect > targetAspect) {
-        drawH = targetH; drawW = targetH * videoAspect; startX = (targetW - drawW) / 2; startY = 0;
+        drawH = targetH; 
+        drawW = targetH * videoAspect; 
+        startX = (targetW - drawW) / 2; 
+        startY = 0;
       } else {
-        drawW = targetW; drawH = targetW / videoAspect; startX = 0; startY = (targetH - drawH) / 2;
+        drawW = targetW; 
+        drawH = targetW / videoAspect; 
+        startX = 0; 
+        startY = (targetH - drawH) / 2;
       }
+      
       ctx.drawImage(video, startX, startY, drawW, drawH);
       const frameImg = new Image();
       frameImg.crossOrigin = "anonymous";
